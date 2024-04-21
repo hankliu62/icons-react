@@ -15,7 +15,10 @@ updates:
           - 18.2.0
       - dependency-name: react
         versions:
-          - 18.2.0
+          - ['17.x', '18.x']
+      - dependency-name: react-dom
+        versions:
+          - ['17.x', '18.x']
       - dependency-name: less
         versions:
           - 4.1.0
