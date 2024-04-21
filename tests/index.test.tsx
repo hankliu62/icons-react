@@ -1,6 +1,6 @@
 import * as React from 'react';
 // import { render as testingLibRender } from '@testing-library/react';
-import Tooltip from '@hankliu/hankliu-ui/lib/Tooltip';
+import Tooltip from '@hankliu/hankliu-ui/lib/tooltip';
 import { mount, render } from 'enzyme';
 import Icon, {
   CheckCircleTwoTone,
@@ -151,18 +151,18 @@ describe('Icon', () => {
   });
 
   it('should support wrapped by Tooltip', () => {
-    const onVisibleChange = jest.fn();
+    const onOpenChange = jest.fn();
     const wrapper = mount(
-      <Tooltip title="xxxxx" mouseEnterDelay={0} mouseLeaveDelay={0} onOpenChange={onVisibleChange}>
+      <Tooltip title="xxxxx" mouseEnterDelay={0} mouseLeaveDelay={0} onOpenChange={onOpenChange}>
         <HomeOutlined />
       </Tooltip>,
     );
     expect(wrapper.find('span')).toHaveLength(1);
     const icon = wrapper.find('span').at(0);
     icon.simulate('mouseenter');
-    expect(onVisibleChange).toHaveBeenCalledWith(true);
+    expect(onOpenChange).toHaveBeenCalledWith(true);
     icon.simulate('mouseleave');
-    expect(onVisibleChange).toHaveBeenCalledWith(false);
+    expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
   it('should support custom usage of children', () => {
@@ -341,24 +341,19 @@ describe('Icon.createFromIconfontCN()', () => {
   });
 
   it('should support wrapped by Tooltip', () => {
-    const onVisibleChange = jest.fn();
+    const onOpenChange = jest.fn();
     const wrapper = mount(
-      <Tooltip
-        title="xxxxx"
-        mouseEnterDelay={0}
-        mouseLeaveDelay={0}
-        onVisibleChange={onVisibleChange}
-      >
+      <Tooltip title="xxxxx" mouseEnterDelay={0} mouseLeaveDelay={0} onOpenChange={onOpenChange}>
         <IconFont type="icon-facebook" />
       </Tooltip>,
     );
     expect(wrapper.find('span')).toHaveLength(1);
     const icon = wrapper.find('span').at(0);
     icon.simulate('mouseenter');
-    expect(onVisibleChange).toHaveBeenCalledWith(true);
+    expect(onOpenChange).toHaveBeenCalledWith(true);
 
     icon.simulate('mouseleave');
-    expect(onVisibleChange).toHaveBeenCalledWith(false);
+    expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 });
 
@@ -422,18 +417,18 @@ describe('Icon.createFromIconfontCN({scriptUrl:[]})', () => {
   });
 
   it('should support wrapped by Tooltip', () => {
-    const onVisibleChange = jest.fn();
+    const onOpenChange = jest.fn();
     const wrapper = mount(
-      <Tooltip title="xxxxx" mouseEnterDelay={0} mouseLeaveDelay={0} onOpenChange={onVisibleChange}>
+      <Tooltip title="xxxxx" mouseEnterDelay={0} mouseLeaveDelay={0} onOpenChange={onOpenChange}>
         <IconFont type="icon-facebook" />
       </Tooltip>,
     );
     expect(wrapper.find('span')).toHaveLength(1);
     const icon = wrapper.find('span').at(0);
     icon.simulate('mouseenter');
-    expect(onVisibleChange).toHaveBeenCalledWith(true);
+    expect(onOpenChange).toHaveBeenCalledWith(true);
     icon.simulate('mouseleave');
-    expect(onVisibleChange).toHaveBeenCalledWith(false);
+    expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
   const IconFont2 = createFromIconfontCN({
