@@ -49,7 +49,7 @@ import SmileTwoTone from '@hankliu/icons/lib/SmileTwoTone';
 import { SmileFilled, SmileTwoTone } from '@hankliu/icons';
 ```
 
-## 组件接口参数
+### 组件接口参数
 
 ```ts
 interface HankLiuIconProps {
@@ -58,6 +58,23 @@ interface HankLiuIconProps {
   style?: React.CSSProperties;
 }
 ```
+
+### 特别说明
+
+如果当前组件中，某些 `Icon` 看起来像被裁剪了一样，效果如下所示：
+
+![图片](https://github.com/hankliu62/icons-react/assets/8088864/d2cb76c4-06c8-4485-a4b5-8e8264cdfa09)
+
+可以提交Issue说明，或者可以使用以下方法进行修复:
+
+``` css
+.hlui-icon-icon-orange svg path {
+  transform-origin: center;
+  transform: scale(0.8);
+}
+```
+
+> PS: 可以提交Issue不一定修复，看心情，就是这么任性，推荐使用上面方法。
 
 ## 案例
 
