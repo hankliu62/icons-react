@@ -16,7 +16,7 @@ dependencies:
     specifier: ^0.0.1
     version: 0.0.1
   '@hankliu/icons-svg':
-    specifier: 0.0.2
+    specifier: ^0.0.2
     version: 0.0.2
   classnames:
     specifier: ^2.5.1
