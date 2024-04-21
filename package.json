@@ -1,0 +1,97 @@
+{
+  "name": "@hankliu/icons",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "🥭 React easy to use HankLiu UI SVG Icons component",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "unpkg": "./dist/index.umd.js",
+  "module": "./es/index.js",
+  "homepage": "https://github.com/hankliu62/icons",
+  "bugs": {
+    "url": "http://github.com/hankliu62/icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/hankliu62/icons.git"
+  },
+  "author": "hank.liu",
+  "scripts": {
+    "start": "npm run generate && dumi dev",
+    "docs:build": "npm run generate && dumi build",
+    "docs:deploy": "npm run generate && gh-pages -d docs-dist",
+    "now-build": "npm run docs:build",
+    "compile": "NODE_ENV=ci npm run prepublishOnlyNot",
+    "clean": "./scripts/cleanup.sh",
+    "build": "father build",
+    "postcompile": "npm run clean && TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/generate.ts --target=entry",
+    "generate": "rimraf src/icons && TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/generate.ts --target=icon",
+    "lint": "eslint .",
+    "prepublishOnlyNot": "npm run generate && npm run build && npm run lint && npm run test:local",
+    "test:local": "rc-test -u",
+    "test": "npm run generate && npm run build && npm run test:local",
+    "coverage": "npm run test -- --coverage"
+  },
+  "resolutions": {
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.4",
+    "@hankliu/colors": "^0.0.1",
+    "@hankliu/icons-svg": "^0.0.2",
+    "classnames": "^2.5.1",
+    "rc-util": "^5.39.1"
+  },
+  "devDependencies": {
+    "@hankliu/fabric": "^0.0.1",
+    "@hankliu/hankliu-ui": "^0.0.1",
+    "@swc/core": "^1.4.16",
+    "@testing-library/react": "^15",
+    "@types/classnames": "^2.3.0",
+    "@types/enzyme": "^3.10.18",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "babel-plugin-import": "^1.13.8",
+    "cross-env": "^7.0.3",
+    "dumi": "^2.2.17",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.8",
+    "enzyme-to-json": "^3.6.2",
+    "eslint": "^9.1.0",
+    "eslint-plugin-jest": "^28.2.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "father": "^4.4.0",
+    "history": "^5.3.0",
+    "lodash": "^4.17.21",
+    "lodash.isnil": "^4.0.0",
+    "lodash.template": "^4.5.0",
+    "pkg-dir": "4.0.0",
+    "prettier": "^3.2.5",
+    "rc-test": "^7.0.15",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
+    "styled-components": "^6.1.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
