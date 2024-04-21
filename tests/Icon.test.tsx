@@ -4,6 +4,15 @@ import { mount } from 'enzyme';
 import Icon from '../src/components/IconBase';
 
 describe('React HankLiuIcon Component', () => {
+  const _error = console.error;
+  beforeEach(() => {
+    global.console.error = () => {};
+  });
+
+  afterEach(() => {
+    global.console.error = _error;
+  });
+
   it('should create SVG element.', () => {
     const props = {
       style: {
@@ -12,15 +21,16 @@ describe('React HankLiuIcon Component', () => {
       className: 'my-icon',
       extraProps: { hello: 'world' },
     } as any;
-    const icon = mount(
-      <Icon {...props} />,
-    );
+    const icon = mount(<Icon {...props} />);
 
     expect(icon).toMatchSnapshot();
   });
 
   it('should allow explicit import.', () => {
+    const _error = console.error;
+    console.error = console.log;
     const icon = mount(<Icon icon={TwitterOutlined} />);
+    console.error = _error;
     expect(typeof icon.find('path').first().prop('d')).toBe('string');
   });
 

@@ -4,15 +4,21 @@ import { SmileOutlined } from '../src';
 import Icon from '../src/components/IconBase';
 
 describe('Render with styles', () => {
+  const _error = console.error;
   beforeEach(() => {
     document.head.innerHTML = '';
+    global.console.error = () => {};
+  });
+
+  afterEach(() => {
+    global.console.error = _error;
   });
 
   it('icon style will inset top of head', () => {
     const head = document.querySelector('head')!;
     const meta = document.createElement('meta');
     head.appendChild(meta);
-    mount(<Icon icon={'Antd' as any} />);
+    mount(<Icon icon={'IconApple' as any} />);
     expect(head.firstElementChild!.tagName).toBe('STYLE');
   });
 

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import * as React from 'react';
 import Icon from '../src/components/IconBase';
+// @ts-ignore
 import { ReactComponent as logo } from './logo.svg';
 
 describe('Icon TypeScript test', () => {
@@ -9,4 +10,5 @@ describe('Icon TypeScript test', () => {
   });
 });
 
+// @ts-ignore
 <Icon component={logo} />;
