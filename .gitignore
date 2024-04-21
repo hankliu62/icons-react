@@ -41,6 +41,8 @@ build/
 .umi
 .dumi
 
+pnpm-lock.yaml
+
 src/icons
 
 .vscode
